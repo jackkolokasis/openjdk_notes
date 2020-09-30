@@ -44,18 +44,18 @@ The definition of the class is as follows:
 ```
 class ConstantPool: public Metadata {
 	private:
-		Array<u1>*			_tags;			// The tag array describing the constant pool's contents
-		ConstantPoolCache*	_cache; 		// The cache holding interpreter runtime information
+		Array<u1>*		_tags;		// The tag array describing the constant pool's contents
+		ConstantPoolCache*	_cache; 	// The cache holding interpreter runtime information
 		InstanceKlass*		_pool_holder	// The corresponding class
-		Array<u2>*			_operands		// For variabled-sized (InvokeDynamic ) nodes - usually is empty
+		Array<u2>*		_operands	// For variabled-sized (InvokeDynamic ) nodes - usually is empty
 
 		// Array of resolved objects from the constant pool and map
 		// from resolved object index to original constant pool index
-		jobject				_resolved_references; // jobject is a pointer type
-		Array<u2>*			_reference_map;
+		jobject			_resolved_references; // jobject is a pointer type
+		Array<u2>*		_reference_map;
 
-		int					_flags;			// Old fashioned bit twiddling
-		int                 _length;        // number of elements in the array
+		int			_flags;		// Old fashioned bit twiddling
+		int                     _length;        // number of elements in the array
  
 		union {
 			// set for CDS to restore resolved references
@@ -64,7 +64,7 @@ class ConstantPool: public Metadata {
 			int             _version;
 		} _saved;
 
-		Monitor*            _lock;
+		Monitor*            	_lock;
 		...
 }
 ```
@@ -132,8 +132,8 @@ The final memory layout of the ConstantPool object is shown below:
 ```
 +---------------------+
 | vfptr               |
-+---------------------+		 Metadata
-| _valid			  |
++---------------------+      Metadata
+| _valid              |
 +---------------------+      ----------------------
 | _tags               |
 +---------------------+
@@ -143,7 +143,7 @@ The final memory layout of the ConstantPool object is shown below:
 +---------------------+
 | _operands           |
 +---------------------+
-| _resolved_references|		 Constant Pool
+| _resolved_references|	      Constant Pool
 +---------------------+
 | _reference_map      |
 +---------------------+
