@@ -38,7 +38,7 @@ First we introduce the ConstantPool class, the specific constant pool
 of the object of this class, which holds the constant pool meta
 information.
 
-## 1. ConstantPoll class
+## 1. ConstantPool class
 The definition of the class is as follows:
 
 ```
@@ -81,7 +81,7 @@ The other attributes will not be introduced too much for the time
 being.
 
 
-## Create ConstantPool Instance
+## 2. Create ConstantPool Instance
 In the method ClassFileParser::parse_constant_pool() that parses the
 constant poil, the mehtod ConstantPool::allocate() is first called to
 create a ConstantPool instance. The method is implemented as follow:
@@ -123,4 +123,37 @@ static int header_size() {
 	int num = sizeof(ConstatnPool);
 	return num/HeapWordSize;
 }
+```
+
+According to the method implementation, it is the memory size occupied
+by the ConstantPool instance itself plus length pointer length.
+The final memory layout of the ConstantPool object is shown below:
+
+```
++---------------------+
+| vfptr               |
++---------------------+		 Metadata
+| _valid			  |
++---------------------+      ----------------------
+| _tags               |
++---------------------+
+| _cache              |
++---------------------+
+| _pool_holder        |
++---------------------+
+| _operands           |
++---------------------+
+| _resolved_references|		 Constant Pool
++---------------------+
+| _reference_map      |
++---------------------+
+| _flags              |
++---------------------+
+| _length             |
++---------------------+
+| _saved              |
++---------------------+
+| _lock               |
++---------------------+      -----------------------
+
 ```
