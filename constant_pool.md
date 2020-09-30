@@ -80,8 +80,33 @@ operation.
 The other attributes will not be introduced too much for the time
 being.
 
+The constant pool contains the following information:
+  
+```
+                                                                   +-------------+
+                                                               +---| Text String |               
+                                                               |   +-------------+
+                                                               |   +---------------------------------+
+                                                               |---| A constant declared as final    |
+                                 +-------------------+         |   +---------------------------------+
+                             +---| Font amount       |---------+   +---------------------------------+
++--------------------+       |   +-------------------+         |---| The value of the basic data type|
+| What a constant    |       |                                 |   +---------------------------------+
+| pool item          |-------+                                 |   +------------------------------+
+| contains           |       |                                 +---| Other                        |
+|                    |       |                                     +------------------------------+
+|                    |       |                                     +------------------------------------------------+
++--------------------+       |   +-------------------+         +---| Fully qualified names for classes and stuctures|                
+                             +---| Symbol References |---------|   +------------------------------------------------+
+							     +-------------------+         |   +----------------------------+
+                                                               |---| Field names and descriptors|
+                                                               |   +----------------------------+
+                                                               +   +-----------------------------+
+                                                               |---| Method names and descriptors|
+                                                                   +-----------------------------+
+```
 
-## 2. Create ConstantPool Instance
+## 2. Create ConstantPool Instance                             
 In the method ClassFileParser::parse_constant_pool() that parses the
 constant poil, the mehtod ConstantPool::allocate() is first called to
 create a ConstantPool instance. The method is implemented as follow:
