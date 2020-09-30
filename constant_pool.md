@@ -98,8 +98,7 @@ The constant pool contains the following information:
 |                    |       |                                     +------------------------------------------------+
 +--------------------+       |   +-------------------+         +---| Fully qualified names for classes and stuctures|                
                              +---| Symbol References |---------|   +------------------------------------------------+
-							     +-------------------+         |   +----------------------------+
-                                                               |---| Field names and descriptors|
+							       |   +----------------------------+                                                                                                      |---| Field names and descriptors|
                                                                |   +----------------------------+
                                                                +   +-----------------------------+
                                                                |---| Method names and descriptors|
